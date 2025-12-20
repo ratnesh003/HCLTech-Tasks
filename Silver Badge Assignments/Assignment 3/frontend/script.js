@@ -36,7 +36,7 @@ recognition.onresult = async (event) => {
 
   stopRecording();
 
-  const response = await fetch("http://127.0.0.1:5000/translate", {
+  const response = await fetch("https://translator-backend-api.azurewebsites.net/translate", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
