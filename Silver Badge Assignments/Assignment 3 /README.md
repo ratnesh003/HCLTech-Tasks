@@ -1,0 +1,3 @@
+# Assignment 3
+
+#### create a translator app which takes your voice/speech as an input (in the language you have selected, give 5 language choices) convert it to speech in the language you selected as output (in the output also give 5 language choices)
