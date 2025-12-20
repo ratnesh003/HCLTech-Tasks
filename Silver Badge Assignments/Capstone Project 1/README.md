@@ -1,4 +1,4 @@
-# capstone project 1
+# Capstone project 1
 
 #### problem statement: Construct a RAG agent using python programming, any open source LLM, sentence transformer for embeddings and an open-source vector db. The upload the embeddings on to the vector db.
   1. Connect to SQLite for storing the summary from LLM
