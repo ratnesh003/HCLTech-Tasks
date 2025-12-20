@@ -1,0 +1,26 @@
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from deep_translator import GoogleTranslator
+
+app = Flask(__name__)
+CORS(app)
+
+@app.route("/translate", methods=["POST"])
+def translate_text():
+    data = request.json
+    text = data.get("text")
+    src_lang = data.get("source_language")
+    tgt_lang = data.get("target_language")
+
+    if not text:
+        return jsonify({"error": "No text provided"}), 400
+
+    translated = GoogleTranslator(
+        source=src_lang,
+        target=tgt_lang
+    ).translate(text)
+
+    return jsonify({"translated_text": translated})
+
+if __name__ == "__main__":
+    app.run(debug=True)

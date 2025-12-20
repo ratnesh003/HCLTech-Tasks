@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+  scrollbar-width: none;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: #e5e7eb;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  background: #020617;
+  width: 480px;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #334155;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 25px;
+}
+
+.language-panel {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.lang-box {
+  flex: 1;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #cbd5f5;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  background: #020617;
+  border: 1px solid #334155;
+  color: #e5e7eb;
+}
+
+select:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.idle {
+  background: #2563eb;
+}
+
+button.recording {
+  background: #dc2626;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.status {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.status.recording {
+  color: #f87171;
+}
+
+.status.idle {
+  color: #94a3b8;
+}
+
+.output-box {
+  margin-top: 22px;
+  background: #020617;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  padding: 15px;
+}
+
+.output-box h3 {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #93c5fd;
+}
+
+.output-box p {
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.speech-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.speaker-btn {
+  background: transparent;
+  border: none ;
+  font-size: 18px;
+  cursor: pointer;
+  color: #38bdf8;
+  padding: 4px;
+  width: 50px;
+}
+
+.speaker-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.speaker-btn:hover:not(:disabled) {
+  color: #7dd3fc;
+}
