@@ -11,6 +11,7 @@ const playOutputBtn = document.getElementById("playOutput");
 
 let lastRecognizedText = "";
 let lastTranslatedText = "";
+let isRecording = false;
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -18,14 +19,19 @@ const SpeechRecognition =
 const recognition = new SpeechRecognition();
 
 recordBtn.onclick = () => {
+  if (isRecording) return;
+
   recognition.lang = inputLang.value;
   recognition.start();
+
+  isRecording = true;
 
   recordBtn.textContent = "⏺ Recording...";
   recordBtn.className = "recording";
   statusEl.textContent = "Listening...";
   statusEl.className = "status recording";
 };
+
 
 recognition.onresult = async (event) => {
   recognition.stop();
@@ -36,7 +42,7 @@ recognition.onresult = async (event) => {
 
   stopRecording();
 
-  const response = await fetch("https://translator-backend-api.azurewebsites.net/translate", {
+  const response = await fetch("https://hcltech-tasks.onrender.com/translate", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -55,6 +61,12 @@ recognition.onresult = async (event) => {
 };
 
 recognition.onerror = () => {
+  isRecording = false;
+  stopRecording();
+};
+
+recognition.onend = () => {
+  isRecording = false;
   stopRecording();
 };
 
