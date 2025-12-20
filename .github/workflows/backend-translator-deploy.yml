@@ -1,0 +1,32 @@
+name: Deploy Backend to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Silver Badge Assignments/Assignment 3/backend/**"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          cd "Silver Badge Assignments/Assignment 3/backend"
+          pip install -r requirements.txt
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: translator-backend-api
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: "Silver Badge Assignments/Assignment 3/backend"
